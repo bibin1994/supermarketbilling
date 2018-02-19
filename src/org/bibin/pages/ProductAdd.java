@@ -64,7 +64,7 @@ public class ProductAdd extends JFrame {
 	 */
 	public ProductAdd() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 930, 423);
+		setBounds(100, 100, 966, 423);
 		contentPane = new JPanel();
 		contentPane.setForeground(SystemColor.textHighlight);
 		contentPane.setBackground(SystemColor.text);
@@ -166,7 +166,7 @@ public class ProductAdd extends JFrame {
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(298, 60, 76, 20);
+		textField_2.setBounds(278, 60, 96, 20);
 		resultpanel.add(textField_2);
 		
 		JLabel resdiscount = new JLabel("Discount");
@@ -196,7 +196,7 @@ public class ProductAdd extends JFrame {
 		resultpanel.add(finalcancel);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(420, 11, 484, 363);
+		panel_1.setBounds(420, 11, 520, 363);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -220,8 +220,9 @@ public class ProductAdd extends JFrame {
 		
 		finalpurchase = new JTable();
 		JScrollPane scrollPane = new JScrollPane(finalpurchase);
-		scrollPane.setBounds(21, 52, 384, 223);
+		scrollPane.setBounds(21, 52, 394, 266);
 		panel_1.add(scrollPane);
+		finalpurchase.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 		finalpurchase.setForeground(SystemColor.inactiveCaptionText);
 		finalpurchase.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -245,6 +246,23 @@ public class ProductAdd extends JFrame {
 		finalpurchase.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		finalpurchase.setAlignmentX(Component.LEFT_ALIGNMENT);
 		finalpurchase.setBounds(446, 52, -421, 235);
+		
+		JButton finaldelete = new JButton("Delete");
+		finaldelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(finalpurchase.getSelectedRow()!= -1)
+				{
+				finalpurchase.remove(finalpurchase.getSelectedRow());
+				}
+			}
+		});
+		finaldelete.setBounds(425, 109, 84, 23);
+		panel_1.add(finaldelete);
+		
+		JButton finalprint = new JButton("Print");
+		finalprint.setBounds(163, 329, 89, 23);
+		panel_1.add(finalprint);
 
 		
 
