@@ -2,13 +2,14 @@ package or.bibin.db;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.bibin.bean.ProductDetails;
 
 public class DbImplementation implements DpIntialiation {
-	static Connection con=null;
-	ProductDetails pro=new ProductDetails();
+	static Connection con;
+	static ProductDetails pro=new ProductDetails();
 	public static Connection execute()
 	{
 		try {
@@ -23,14 +24,15 @@ public class DbImplementation implements DpIntialiation {
 		return con;
 	}
 	
-	public List<ProductDetails> check()
+	public static LinkedList<ProductDetails> check(String s,int n)
 	
 	{
 		
 		try
 		{
+			execute();
 		PreparedStatement stm=con.prepareStatement("Select * from productdetails where pid=?");
-		stm.setInt(1, 100);
+		stm.setString(1, s);
 		ResultSet rs=stm.executeQuery();
 		while(rs.next())
 		{
@@ -45,7 +47,7 @@ public class DbImplementation implements DpIntialiation {
 			e.printStackTrace();
 		}
 		
-		ArrayList<ProductDetails> list=new ArrayList<>();
+		LinkedList<ProductDetails> list=new LinkedList<>();
 		list.add(pro);
 		return list;
 		
